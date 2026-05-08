@@ -17,7 +17,7 @@
         }
         model-viewer {
             width: 100%;
-            height: 50vh; /* Tinggi disesuaikan agar tidak menabrak kontrol bawah */
+            height: 50vh; 
             background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
             --poster-color: transparent;
         }
@@ -49,6 +49,13 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* FIX: Class penentu untuk menghilangkan loading screen otomatis */
+        .hide {
+            display: none !important;
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="text-slate-200 pb-32">
@@ -79,7 +86,7 @@
                 auto-rotate
                 ar-placement="floor">
                 
-                <div slot="progress-bar" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 z-50">
+                <div slot="progress-bar" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 z-50 transition-opacity duration-300">
                     <div class="loading-spinner mb-4"></div>
                     <p class="text-emerald-400 text-xs font-bold animate-pulse tracking-widest uppercase">Menyiapkan 3D...</p>
                 </div>
@@ -131,7 +138,7 @@
                 <span class="text-[10px] text-slate-500 uppercase">Estimasi Biaya</span>
                 <p id="price-tag" class="text-xl font-bold text-emerald-400">Rp 150.000</p>
             </div>
-            <button class="flex-1 bg-emerald-500 text-slate-900 font-bold py-3 rounded-xl shadow-lg active:scale-95 transition-all">
+            <button class="flex-1 bg-emerald-500 text-slate-900 font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-95 transition-all">
                 Pesan via WA
             </button>
         </div>
